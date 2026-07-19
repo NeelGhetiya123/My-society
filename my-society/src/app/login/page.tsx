@@ -2,36 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { LogIn } from "lucide-react";
+import { ArrowLeft, ArrowRight, Building2, LogIn } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { ROLES, type RoleKey } from "@/lib/data";
-
-export default function Login() {
-  const router = useRouter();
-  const [role, setRole] = useState<RoleKey>("resident");
-  return (
-    <div className="grid min-h-screen place-items-center p-6">
-      <div className="absolute right-6 top-6"><ThemeToggle /></div>
-      <motion.div
-        initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }}
-        transition={{ ease: [0.22, 1, 0.36, 1] }}
-        className="w-full max-w-[420px]"
-      >
-        <div className="text-xs font-bold uppercase tracking-widest text-primary-strong">Welcome back</div>
-        <h1 className="mt-2 font-serif text-3xl font-semibold">Sign in to My Society</h1>
-        <p className="mb-6 mt-1 text-ink-soft">Pick a role. Each sees a different, permission-scoped workspace.</p>
-        <label className="mb-1.5 block text-[0.82rem] font-semibold text-ink-soft">Sign in as role</label>
-        <select value={role} onChange={(e) => setRole(e.target.value as RoleKey)}
-          className="mb-4 w-full rounded-[7px] border border-border bg-surface px-3.5 py-2.5">
-          {(Object.keys(ROLES) as RoleKey[]).map((k) => <option key={k} value={k}>{ROLES[k].label}</option>)}
-        </select>
-        <button
-          onClick={() => router.push(`/dashboard?role=${role}`)}
-          className="flex w-full items-center justify-center gap-2 rounded-[7px] bg-primary py-3 font-semibold text-white hover:bg-primary-strong"
-        >
-          <LogIn size={18} /> Enter workspace
-        </button>
-      </motion.div>
-    </div>
-  );
-}
+export default function Login(){const router=useRouter();const [role,setRole]=useState<RoleKey>('resident');const R=ROLES[role];return <main className="grid min-h-screen lg:grid-cols-[.82fr_1.18fr]"><section className="hidden bg-primary p-10 text-[var(--bg)] lg:flex lg:flex-col lg:justify-between"><div className="flex items-center gap-3 font-serif text-xl"><span className="grid h-10 w-10 place-items-center rounded-[13px] bg-[color:var(--bg)]/15"><Building2 size={20}/></span>My Society</div><div><div className="max-w-[9ch] font-serif text-6xl font-semibold leading-[.95]">Good work starts with context.</div><p className="mt-6 max-w-[34ch] leading-7 opacity-80">A single workspace for the people who keep Greenwood Residency moving.</p></div><div className="text-sm opacity-65">Greenwood Residency CHS · MH/2011/00842</div></section><section className="relative flex items-center justify-center bg-bg px-6 py-10 sm:px-10"><div className="absolute right-6 top-6 flex items-center gap-3"><ThemeToggle/></div><motion.div initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{duration:.5,ease:[.16,1,.3,1]}} className="w-full max-w-[460px]"><button onClick={()=>router.push('/')} className="mb-16 inline-flex items-center gap-2 text-sm font-semibold text-ink-soft hover:text-ink"><ArrowLeft size={16}/> Back home</button><div className="mb-8 lg:hidden"><div className="flex items-center gap-3 font-serif text-xl font-semibold"><span className="grid h-10 w-10 place-items-center rounded-[13px] bg-primary text-[var(--bg)]"><Building2 size={20}/></span>My Society</div></div><div className="text-xs font-bold uppercase tracking-[.14em] text-primary-strong">Workspace access</div><h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight">Choose your view.</h1><p className="mt-3 max-w-[40ch] leading-7 text-ink-soft">This demo scopes the workspace to the role you select. No password, no fake ceremony.</p><label className="mt-10 block text-xs font-bold uppercase tracking-[.12em] text-ink-faint">Enter as</label><div className="mt-3 grid gap-2 sm:grid-cols-2">{(Object.keys(ROLES) as RoleKey[]).map(k=><button key={k} onClick={()=>setRole(k)} className={`flex min-h-14 items-center gap-3 rounded-xl border px-4 text-left transition ${role===k?'border-primary bg-primary-tint':'border-border bg-surface hover:bg-surface-2'}`}><span className={`grid h-8 w-8 place-items-center rounded-full text-[.68rem] font-bold ${role===k?'bg-primary text-[var(--bg)]':'bg-surface-2 text-ink-soft'}`}>{ROLES[k].initials}</span><span><b className="block text-sm">{ROLES[k].label}</b><span className="text-xs text-ink-faint">{ROLES[k].name}</span></span></button>)}</div><div className="mt-8 flex items-center justify-between rounded-xl border border-border bg-surface px-4 py-3"><div><div className="text-xs text-ink-faint">Selected view</div><div className="mt-1 text-sm font-semibold">{R.label} · {R.flat}</div></div><button onClick={()=>router.push(`/dashboard?role=${role}`)} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-[var(--bg)] transition hover:-translate-y-0.5">Enter <ArrowRight size={16}/></button></div></motion.div></section></main>}

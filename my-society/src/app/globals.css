@@ -2,19 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-  --bg: oklch(0.984 0.006 55); --surface: oklch(0.997 0.003 55);
-  --surface-2: oklch(0.965 0.007 55); --border: oklch(0.9 0.008 50);
-  --ink: oklch(0.27 0.018 48); --ink-soft: oklch(0.47 0.014 48); --ink-faint: oklch(0.62 0.012 50);
-  --primary: oklch(0.56 0.13 45); --primary-strong: oklch(0.48 0.135 42); --primary-tint: oklch(0.955 0.028 50);
+:root {
+  --bg: oklch(0.975 0.012 82);
+  --surface: oklch(0.992 0.008 82);
+  --surface-2: oklch(0.945 0.018 82);
+  --surface-3: oklch(0.915 0.025 82);
+  --border: oklch(0.86 0.025 78);
+  --ink: oklch(0.22 0.025 58);
+  --ink-soft: oklch(0.46 0.026 58);
+  --ink-faint: oklch(0.61 0.022 62);
+  --primary: oklch(0.48 0.15 42);
+  --primary-strong: oklch(0.38 0.14 38);
+  --primary-tint: oklch(0.91 0.065 58);
+  --good: oklch(0.48 0.14 157);
+  --bad: oklch(0.54 0.16 25);
 }
-.dark{
-  --bg: oklch(0.17 0.012 48); --surface: oklch(0.212 0.014 48);
-  --surface-2: oklch(0.252 0.015 48); --border: oklch(0.32 0.014 48);
-  --ink: oklch(0.94 0.01 60); --ink-soft: oklch(0.77 0.012 55); --ink-faint: oklch(0.6 0.012 52);
-  --primary: oklch(0.68 0.115 50); --primary-strong: oklch(0.76 0.11 52); --primary-tint: oklch(0.31 0.045 48);
+.dark {
+  --bg: oklch(0.155 0.018 48);
+  --surface: oklch(0.205 0.021 48);
+  --surface-2: oklch(0.25 0.024 48);
+  --surface-3: oklch(0.29 0.026 48);
+  --border: oklch(0.34 0.025 48);
+  --ink: oklch(0.93 0.018 75);
+  --ink-soft: oklch(0.75 0.018 70);
+  --ink-faint: oklch(0.57 0.018 65);
+  --primary: oklch(0.72 0.125 55);
+  --primary-strong: oklch(0.8 0.105 65);
+  --primary-tint: oklch(0.29 0.06 48);
+  --good: oklch(0.74 0.13 157);
+  --bad: oklch(0.72 0.14 25);
 }
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
-  transition:background .3s,color .3s;}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; font-size: 16px; font-optical-sizing: auto; transition: background .3s, color .3s; }
+button, input, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+::selection { background: var(--primary-tint); color: var(--ink); }
+.font-serif { font-family: "Fraunces", Georgia, serif; }
+.surface-rule { border-color: var(--border); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
