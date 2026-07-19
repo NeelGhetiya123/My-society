@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg: oklch(0.984 0.006 55); --surface: oklch(0.997 0.003 55);
+  --surface-2: oklch(0.965 0.007 55); --border: oklch(0.9 0.008 50);
+  --ink: oklch(0.27 0.018 48); --ink-soft: oklch(0.47 0.014 48); --ink-faint: oklch(0.62 0.012 50);
+  --primary: oklch(0.56 0.13 45); --primary-strong: oklch(0.48 0.135 42); --primary-tint: oklch(0.955 0.028 50);
+}
+.dark{
+  --bg: oklch(0.17 0.012 48); --surface: oklch(0.212 0.014 48);
+  --surface-2: oklch(0.252 0.015 48); --border: oklch(0.32 0.014 48);
+  --ink: oklch(0.94 0.01 60); --ink-soft: oklch(0.77 0.012 55); --ink-faint: oklch(0.6 0.012 52);
+  --primary: oklch(0.68 0.115 50); --primary-strong: oklch(0.76 0.11 52); --primary-tint: oklch(0.31 0.045 48);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  transition:background .3s,color .3s;}
